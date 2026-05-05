@@ -61,7 +61,19 @@ const projects = [
   }
 ];
 
-const ProjectCard = ({ project, index, onPreview }: { project: any, index: number, onPreview: (p: any) => void }) => {
+interface Project {
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+  integrity: string;
+  status: string;
+  liveUrl: string;
+  githubUrl: string;
+  tech: string[];
+}
+
+const ProjectCard = ({ project, index, onPreview }: { project: Project, index: number, onPreview: (p: Project) => void }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -147,7 +159,7 @@ const ProjectCard = ({ project, index, onPreview }: { project: any, index: numbe
           {project.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-           {project.tech.map(t => (
+           {project.tech.map((t: string) => (
              <span key={t} className="px-3 py-1 bg-white/5 rounded-md text-[8px] font-black tracking-widest text-white/40 border border-white/5 uppercase">{t}</span>
            ))}
         </div>
@@ -168,7 +180,7 @@ const ProjectCard = ({ project, index, onPreview }: { project: any, index: numbe
 };
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <section id="solutions" className="py-32 relative">
