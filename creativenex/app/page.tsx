@@ -10,6 +10,7 @@ import TechStack from "@/components/TechStack";
 import LetsBuild from "@/components/LetsBuild";
 import Stats from "@/components/Stats";
 import BackgroundEffect from "@/components/BackgroundEffect";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -32,6 +33,8 @@ export default function Home() {
       <Features />
       
       <TechStack />
+      
+      <ContactForm />
       
       <ContactCTO />
 
